@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -11,11 +10,8 @@ export default function Home() {
   } = useForm();
   const onSubmit = (data) => {
     toast(data.username +" "+ data.email, { icon: "👏" });
-    // toast(data.email, { icon: "👏" });
-    // toast(data.password, { icon: "👏" });
+   
   };
-
-  // watch input value by passing the name of it
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */

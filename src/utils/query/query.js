@@ -12,13 +12,22 @@ export const fetchData = async (url) => {
 };
 
 // Post data
+// export const postData = async (url, data) => {
+//   try {
+//     const response = await axiosInstance.post(url, data);
+//     return response.data;
+//   } catch (error) {
+//     throw error;
+//   }
+// };
+
 export const postData = async (url, data) => {
-  try {
-    const response = await axiosInstance.post(url, data);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await axios.post(url, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return response.data;
 };
 
 // Edit data
