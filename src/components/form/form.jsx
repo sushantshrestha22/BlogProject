@@ -4,8 +4,9 @@ import { Button } from "../ui/button";
 import { SignUpSchema } from "@/schema/SignupSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import Link from "next/link";
 
-export default function Home({ title }) {
+export default function SignUpForm({ title }) {
   const {
     register,
     handleSubmit,
@@ -128,6 +129,11 @@ export default function Home({ title }) {
                 {errors.mobileNumber.message}
               </span>
             )}
+          </div>
+          <div className="col-span-2">
+            <Link href="/login" className="text-blue-500">
+              Already have an account? Login
+            </Link>
           </div>
           <Button type="submit" className="col-span-2">
             Submit
