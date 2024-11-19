@@ -1,5 +1,7 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+import {LayoutPanelTop, LayoutDashboard, Settings, Users, PanelsTopLeft } from "lucide-react"
+import { FaJs } from "react-icons/fa6";
+import { BiLogoJquery } from "react-icons/bi";
+import { IoLogoCss3 } from "react-icons/io";
 import {
   Sidebar,
   SidebarContent,
@@ -14,24 +16,39 @@ import {
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "/home",
-    icon: Home,
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: LayoutDashboard ,
   },
   {
-    title: "Inbox",
-    url: "/inbox",
-    icon: Inbox,
+    title: "User",
+    url: "/user",
+    icon: Users,
   },
   {
-    title: "Calendar",
-    url: "/calender",
-    icon: Calendar,
+    title: "Blog",
+    url: "/blog",
+    icon: LayoutPanelTop,
   },
   {
-    title: "Search",
-    url: "/search",
-    icon: Search,
+    title: "Web Design",
+    url: "/web-design",
+    icon: PanelsTopLeft,
+  },
+  {
+    title: "JavaScript",
+    url: "/javascript",
+    icon: FaJs,
+  },
+  {
+    title: "JQuery",
+    url: "/jQuery",
+    icon: BiLogoJquery,
+  },
+  {
+    title: "CSS",
+    url: "/css",
+    icon: IoLogoCss3,
   },
   {
     title: "Settings",
@@ -45,7 +62,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Blog Management System</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
