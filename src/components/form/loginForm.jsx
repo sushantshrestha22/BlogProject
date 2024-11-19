@@ -60,7 +60,7 @@ export default function LogInForm() {
           </div>
           <div>
             <Link href="/signup" className="text-blue-500">
-              Don't have an account? SignUp
+              Don&apos;t have an account? SignUp
             </Link>
           </div>
           <Button type="submit" className="col-span-2">
