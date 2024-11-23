@@ -1,8 +1,8 @@
-export const API_URL = "localhost:8081/api/v1";
+export const API_URL = "http://localhost:8081/api/v1";
 // export const API_URL = "https://backend.devdahamedicalcollege.edu.np/api/";
 
 export const queryKeys = {
-  users: "user",
+  users: "users",
   generalInformation: "general-information",
   notices: "notices",
   noticesPopup: "notices/popup",

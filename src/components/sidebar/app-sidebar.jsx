@@ -1,4 +1,11 @@
-import {LayoutPanelTop, LayoutDashboard, Settings, Users, PanelsTopLeft } from "lucide-react"
+"use client";
+import {
+  LayoutPanelTop,
+  LayoutDashboard,
+  Settings,
+  Users,
+  PanelsTopLeft,
+} from "lucide-react";
 import { FaJs } from "react-icons/fa6";
 import { BiLogoJquery } from "react-icons/bi";
 import { IoLogoCss3 } from "react-icons/io";
@@ -11,14 +18,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Menu items.
 const items = [
   {
     title: "Dashboard",
     url: "/dashboard",
-    icon: LayoutDashboard ,
+    icon: LayoutDashboard,
   },
   {
     title: "User",
@@ -55,9 +64,10 @@ const items = [
     url: "/settings",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
+  const pathname = usePathname();
   return (
     <Sidebar>
       <SidebarContent>
@@ -68,10 +78,17 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link
+                      className={` ${
+                        pathname === `${item.url}`
+                          ? "bg-black text-white hover:bg-black"
+                          : ""
+                      }`}
+                      href={item.url}
+                    >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -80,5 +97,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
