@@ -1,45 +1,68 @@
 import React from "react";
 import { fetchData } from "@/utils/query/query";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 
 const Read = async ({ params }) => {
   const { id } = params;
+
   const data = await fetchData(`/auth/user/${id}`);
 
   return (
-    <div >
-      <h1 className="text-2xl font-bold">User Details</h1>
+    <div className="md:px-5 md:py-10 max-sm:px-2 max-sm:py-1">
+      <h1 className="md:text-xl font-bold">User Details</h1>
 
       {data && (
-        <div className="lg:grid lg:grid-cols-2 lg:gap-6 lg:px-6 lg:py-4">
+        <div className="grid lg:grid-cols-2 lg:gap-6 lg:px-6 lg:py-4 max-sm:grid-cols-1 max-sm:gap-3 ">
           <div>
-            <Label for="firstName">First Name:</Label>
-            <Input value={data.firstName} id="firstName" />
+            <Label htmlFor="firstName">First Name:</Label>
+            <div
+              id="firstName"
+              className="border p-2 rounded-md text-sm shadow"
+            >
+              {data.firstName}
+            </div>
           </div>
           <div>
-            <Label for="lastName">Last Name:</Label>
-            <Input value={data.lastName} id="lastName" />
+            <Label htmlFor="lastName">Last Name:</Label>
+            <div id="lastName" className="border p-2 rounded-md text-sm shadow">
+              {data.lastName}
+            </div>
           </div>
           <div>
-            <Label for="mobileNumber">Mobile Number:</Label>
-            <Input value={data.mobileNumber} id="mobileNumber" />
+            <Label htmlFor="mobileNumber">Mobile Number:</Label>
+            <div
+              id="mobileNumber"
+              className="border p-2 rounded-md text-sm shadow"
+            >
+              {data.mobileNumber}
+            </div>
           </div>
           <div>
-            <Label for="address">Address:</Label>
-            <Input
-              value={data.address}
-              id="
-            address"
-            />
+            <Label htmlFor="address">Address:</Label>
+            <div
+              id="address"
+              className="border p-2 rounded-md text-sm shadow"
+            >
+              {data.address}
+            </div>
           </div>
           <div>
-            <Label for="email">Email:</Label>
-            <Input value={data.email} id="email" />
+            <Label htmlFor="email">Email:</Label>
+            <div
+              id="email"
+              className="border p-2 rounded-md text-sm shadow"
+            >
+              {data.email}
+            </div>
           </div>
           <div>
-            <Label for="role">Role:</Label>
-            <Input value={data.role} id="role" />
+            <Label htmlFor="role">Role:</Label>
+            <div
+              id="role"
+              className="border p-2 rounded-md text-sm shadow"
+            >
+              {data.role}
+            </div>
           </div>
         </div>
       )}

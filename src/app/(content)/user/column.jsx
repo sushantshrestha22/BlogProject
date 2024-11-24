@@ -42,7 +42,7 @@ export const columns = [
     columnHelper.accessor("email", {
       id: "email",
       cell: (info) => (
-        <span className="italic text-blue-600">{info.getValue()}</span>
+        <span className="italic">{info.getValue()}</span>
       ),
       header: () => (
         <span className="flex items-center justify-center">Email</span>
@@ -62,7 +62,7 @@ export const columns = [
             href={`user/read/${row.original.id}`}
             className="flex items-center justify-center"
           >
-            <button className="text-blue-500 hover:text-blue-700 transition duration-200">
+            <button className="text-gray-500 hover:text-black transition duration-200">
               <TiEye className="h-6 w-6" />
             </button>
           </Link>
