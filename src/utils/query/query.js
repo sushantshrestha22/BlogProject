@@ -1,5 +1,4 @@
 // utils/Providers/api/query.js
-import axios from "axios";
 import axiosInstance from "../api/axios";
 
 // Fetch data
@@ -13,23 +12,23 @@ export const fetchData = async (url) => {
 };
 
 // Post data
-// export const postData = async (url, data) => {
-//   try {
-//     const response = await axiosInstance.post(url, data);
-//     return response.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 export const postData = async (url, data) => {
-  const response = await axios.post(url, data, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
-  return response.data;
+  try {
+    const response = await axiosInstance.post(url, data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
+
+// export const postData = async (url, data) => {
+//   const response = await axios.post(url, data, {
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//     },
+//   });
+//   return response.data;
+// };
 
 // Edit data
 export const editData = async (url, data) => {
