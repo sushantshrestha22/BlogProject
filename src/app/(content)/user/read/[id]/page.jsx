@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchData } from "@/utils/query/query";
 import { Label } from "@/components/ui/label";
+import Header from "@/components/navbar/navbar";
 
 const Read = async ({ params }) => {
   const { id } = params;
@@ -9,7 +10,7 @@ const Read = async ({ params }) => {
 
   return (
     <div className="md:px-5 md:py-10 max-sm:px-2 max-sm:py-1">
-      <h1 className="md:text-xl font-bold">User Details</h1>
+       <Header />
 
       {data && (
         <div className="grid lg:grid-cols-2 lg:gap-6 lg:px-6 lg:py-4 max-sm:grid-cols-1 max-sm:gap-3 ">
