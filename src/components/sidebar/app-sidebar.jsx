@@ -67,7 +67,10 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  pathname = pathname.toLowerCase().split("/")[1];
+  console.log(pathname);
+  
   return (
     <Sidebar>
       <SidebarContent>
@@ -80,7 +83,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link
                       className={` ${
-                        pathname === `${item.url}`
+                       pathname === item.url.toLowerCase().split("/")[1]
                           ? "bg-black text-white hover:bg-black"
                           : ""
                       }`}

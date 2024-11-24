@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { SignUpSchema } from "@/schema/SignupSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 import Link from "next/link";
+import { postData } from "@/utils/query/query";
+import axios from "axios";
 
 export default function SignUpForm({ title }) {
   const {
@@ -17,14 +18,15 @@ export default function SignUpForm({ title }) {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:8081/api/v1/auth/user/createUser", data);
+    axios.post("http://localhost:8081/api/v1/auth/user/create", data);
+    // postData("http://localhost:8081/api/v1/auth/user/create", data);
   };
 
   return (
     <div className="h-[100vh] flex justify-center items-center">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-5 border rounded w-[100%] p-5">
-          <div className="font-semibold text-2xl col-span-2">{title}</div>
+        <div className="md:grid md:grid-cols-2 gap-5 border rounded w-[100%] p-5">
+          <div className="font-semibold text-2xl md:col-span-2">{title}</div>
           <div className="flex flex-col">
             <label htmlFor="firstName">FirstName:</label>
             <input
@@ -135,7 +137,7 @@ export default function SignUpForm({ title }) {
               Already have an account? Login
             </Link>
           </div>
-          <Button type="submit" className="col-span-2">
+          <Button type="submit" className="md:col-span-2">
             Submit
           </Button>
         </div>

@@ -1,4 +1,5 @@
 // utils/Providers/api/query.js
+import axios from "axios";
 import axiosInstance from "../api/axios";
 
 // Fetch data

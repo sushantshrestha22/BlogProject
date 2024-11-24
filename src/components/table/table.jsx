@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import {
   FaAnglesRight,
@@ -15,8 +15,9 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
 } from "@tanstack/react-table";
+import TableHeader from "../navbar/navbar";
 
-const Table = ({ columns, data = [] }) => {
+const Table = ({ columns, data = [] ,link,title}) => {
   const [sorting, setSorting] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [pagination, setPagination] = useState({
@@ -35,15 +36,22 @@ const Table = ({ columns, data = [] }) => {
     },
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    
+
     onGlobalFilterChange: setGlobalFilter,
     getFilteredRowModel: getFilteredRowModel(),
+
     onPaginationChange: setPagination,
     getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
-    <div className="flex flex-col gap-6 mx-auto py-12 sm:px-6 lg:px-8 ">
+    <div className="flex flex-col gap-6 mx-auto sm:px-6 lg:px-8 ">
+      <TableHeader
+        value={globalFilter ?? ""}
+        onChange={(e) => setGlobalFilter(e.target.value)}
+        link={link}
+        title={title}
+      />
       <div className=" bg-white shadow-md rounded-lg">
         <table className="w-full divide-y divide-gray-200">
           <thead className="bg-black ">
