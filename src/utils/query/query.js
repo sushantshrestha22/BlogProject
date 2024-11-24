@@ -33,7 +33,7 @@ export const postData = async (url, data) => {
 // Edit data
 export const editData = async (url, data) => {
   try {
-    const response = await axiosInstance.put(url, data);
+    const response = await axiosInstance.patch(url, data);
     return response.data;
   } catch (error) {
     throw error;

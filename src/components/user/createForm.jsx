@@ -20,6 +20,7 @@ const CreateUser = () => {
   const onSubmit = (data) => {
     console.log(data);
     postData("/auth/user/create", data);
+    redirect("/user");
   };
 
   return (

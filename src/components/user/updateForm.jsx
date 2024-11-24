@@ -1,42 +1,164 @@
-import React from "react";
-import { fetchData } from "@/utils/query/query";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+"use client";
+import { useForm } from "react-hook-form";
+import { Input } from "../ui/input";
+import { Label } from "@radix-ui/react-dropdown-menu";
+import { Button } from "../ui/button";
+import {UpdateUserSchema} from "@/schema/UpdateUserSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
+// import axios from "axios";
+import { fetchData, editData } from "@/utils/query/query";
+import { redirect } from "next/navigation";
 
-const UpdateForm = async ({ id }) => {
-  const data = await fetchData(`/auth/user/${id}`);
+const UpdateUser = ({ id, defaultValue }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(UpdateUserSchema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    editData(`/auth/user/${id}`, data);
+    redirect("/user");
+  };
+
   return (
-    <div>
-      {data && (
-        <div className="grid lg:grid-cols-2 lg:gap-6 lg:px-6 lg:py-4 max-sm:grid-cols-1 max-sm:gap-3 ">
-          <div>
-            <Label htmlFor="firstName">First Name:</Label>
-            <Input id="firstName" defaultValue={data.firstName} />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid md:grid-cols-2 md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
+          <div className="">
+            <Label htmlFor="firstName">FirstName:</Label>
+            <Input
+              type="text"
+              placeholder="firstName"
+              id="firstName"
+              {...register("firstName")}
+              defaultValue={defaultValue.firstName}
+            />
+
+            {errors.firstName && (
+              <span className="text-red-600 text-sm">
+                {errors.firstName.message}
+              </span>
+            )}
           </div>
-          <div>
-            <Label htmlFor="lastName">Last Name:</Label>
-            <Input id="lastName" defaultValue={data.lastName} />
+          <div className="">
+            <Label htmlFor="lastName">LastName:</Label>
+            <Input
+              type="text"
+              placeholder="lastName"
+              id="lastName"
+              {...register("lastName")}
+              defaultValue={defaultValue.lastName}
+            />
+            {errors.lastName && (
+              <span className="text-red-600 text-sm">
+                {errors.lastName.message}
+              </span>
+            )}
           </div>
-          <div>
-            <Label htmlFor="mobileNumber">Mobile Number:</Label>
-            <Input id="mobileNumber" defaultValue={data.mobileNumber} />
-          </div>
-          <div>
-            <Label htmlFor="address">Address:</Label>
-            <Input id="address" defaultValue={data.address} />
-          </div>
-          <div>
+          <div className="">
             <Label htmlFor="email">Email:</Label>
-            <Input id="email" defaultValue={data.email} />
+            <Input
+              type="email"
+              placeholder="email"
+              id="email"
+              {...register("email")}
+              defaultValue={defaultValue.email}
+            />
+            {errors.email && (
+              <span className="text-red-600 text-sm">
+                {errors.email.message}
+              </span>
+            )}
           </div>
-          <div>
+          {/* <div className="">
+            <Label htmlFor="password">Password:</Label>
+            <Input
+              type="password"
+              placeholder="password"
+              id="password"
+              {...register("password")}
+
+
+            />
+            {errors.password && (
+              <span className="text-red-600 text-sm">
+                {errors.password.message}
+              </span>
+            )}
+          </div> */}
+          {/* <div className="">
+            <Label htmlFor="confirmPassword">ConfirmPassword:</Label>
+            <Input
+              type="password"
+              placeholder="confirmPassword"
+              id="confirmPassword"
+              {...register("confirmPassword")}
+            />
+            {errors.confirmPassword && (
+              <span className="text-red-600 text-sm">
+                {errors.confirmPassword.message}
+              </span>
+            )}
+          </div> */}
+          <div className="">
+            <Label htmlFor="address">Address:</Label>
+            <Input
+              type="text"
+              placeholder="address"
+              id="address"
+              {...register("address")}
+              defaultValue={defaultValue.address}
+            />
+            {errors.address && (
+              <span className="text-red-600 text-sm">
+                {errors.address.message}
+              </span>
+            )}
+          </div>
+          <div className="">
+            <Label htmlFor="mobileNumber">MobileNumber:</Label>
+            <Input
+              type="text"
+              placeholder="mobileNumber"
+              id="mobileNumber"
+              {...register("mobileNumber")}
+              defaultValue={defaultValue.mobileNumber}
+            />
+            {errors.mobileNumber && (
+              <span className="text-red-600 text-sm">
+                {errors.mobileNumber.message}
+              </span>
+            )}
+          </div>
+
+          <div className="">
             <Label htmlFor="role">Role:</Label>
-            <Input id="role" defaultValue={data.role} />
+            <Input
+              type="text"
+              placeholder="role"
+              id="role"
+              {...register("role")}
+              defaultValue={defaultValue.role}
+            />
+            {errors.role && (
+              <span className="text-red-600 text-sm">
+                {errors.role.message}
+              </span>
+            )}
           </div>
+
+
+          <Button type="submit" className="md:col-span-2">
+            Submit
+          </Button>
         </div>
-      )}
-    </div>
+      </form>
+    </>
   );
 };
 
-export default UpdateForm;
+export default UpdateUser;
